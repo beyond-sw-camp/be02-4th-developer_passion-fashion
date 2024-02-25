@@ -63,7 +63,7 @@
 
 <br>
 
-<img width="596" alt="화면 캡처 2024-02-25 195936" src="https://github.com/beyond-sw-camp/be02-4th-developer_passion-fashion/assets/148875644/ef427fa4-2147-4698-8399-42cb88b996e1">
+<img width="595" alt="화면 캡처 2024-02-25 195936" src="https://github.com/beyond-sw-camp/be02-4th-developer_passion-fashion/assets/148875644/37cb8f83-0455-4884-911c-a7f23f38e9bc">
 
 <br>
 
