@@ -79,6 +79,26 @@ pipeline {
                     sh 'docker push hyungdoyou/fe:3.$BUILD_NUMBER'
                 }
             }
+            post {
+                // Docker Push 성공 시 슬랙 채널 ( #테스트 ) 로 성공 알림 발송
+                success {
+                    slackSend(
+                        channel: '#테스트', 
+                        color: 'good', 
+                        message: "Docker image hyungdoyou/fe:3.${BUILD_NUMBER} push success.", 
+                        teamDomain: 'jenkins-alert-hq', 
+                        tokenCredentialId: 'slack-jenkins-token')
+                }
+                // Docker Push 실패 시 슬랙 채널 ( #테스트 ) 로 실패 알림 발송
+                failure {
+                    slackSend(
+                        channel: '#테스트', 
+                        color: 'danger', 
+                        message: "Docker image hyungdoyou/fe:3.${BUILD_NUMBER} push failed.", 
+                        teamDomain: 'jenkins-alert-hq', 
+                        tokenCredentialId: 'slack-jenkins-token')
+                }
+            }
         }
         // 7. SSH 전송
         stage('SSH transfer') {
@@ -114,6 +134,26 @@ pipeline {
                         )
                     ]
                 )
+            }
+            post {
+                // SSH Transfer 성공 시 슬랙 채널 ( #테스트 ) 로 성공 알림 발송
+                success {
+                    slackSend(
+                        channel: '#테스트', 
+                        color: 'good', 
+                        message: "frontend-deployment.yml transfer success.", 
+                        teamDomain: 'jenkins-alert-hq', 
+                        tokenCredentialId: 'slack-jenkins-token')
+                }
+                // SSH Transfer 실패 시 슬랙 채널 ( #테스트 ) 로 실패 알림 발송
+                failure {
+                    slackSend(
+                        channel: '#테스트', 
+                        color: 'danger', 
+                        message: "frontend-deployment.yml transfer failed.", 
+                        teamDomain: 'jenkins-alert-hq', 
+                        tokenCredentialId: 'slack-jenkins-token')
+                }
             }
         }
         // 8. 슬랙 알림
