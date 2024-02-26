@@ -122,19 +122,19 @@
 
 ### ✅ Master Node에는 다음과 같은 파드들이 추가된다.
 
-> kube-system Namespace
+> **kube-system Namespace**
 >
-> - coredns : 클러스터 내에서 DNS 서버 역할
-> - calico-kube-controllers : 클러스터 내에서 네트워크 정책을 관리하고 구성하는 역할
-> - metrics-server : 클러스터 내에서 파드 및 노드의 리소스 사용량 및 성능 지표를 수집하고 노출하는 역할
+> - **coredns : 클러스터 내에서 DNS 서버 역할**
+> - **calico-kube-controllers : 클러스터 내에서 네트워크 정책을 관리하고 구성하는 역할**
+> - **metrics-server : 클러스터 내에서 파드 및 노드의 리소스 사용량 및 성능 지표를 수집하고 노출하는 역할**
 
 <br>
 
-> metailb-system Namespace
+> **metailb-system Namespace**
 >
-> - speaker : 외부 라우팅 장치와 통신하여 로드 밸런서에 할당된 IP 주소를 라우팅하는 역할
-> - controller : 클러스터 내에서 IP 주소 범위를 관리하고, 외부 서비스에 IP 주소를 동적으로 할당하고  
-&nbsp;　　　　　회수하는 역할
+> - **speaker : 외부 라우팅 장치와 통신하여 로드 밸런서에 할당된 IP 주소를 라우팅하는 역할**
+> - **controller : 클러스터 내에서 IP 주소 범위를 관리하고, 외부 서비스에 IP 주소를 동적으로 할당하고**
+&nbsp;　　　　　**회수하는 역할**
 
  </details><br>
 
