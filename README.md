@@ -23,6 +23,17 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 
 <br>
 
+## 📌 기술 스택
+
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white&color=black"></a></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white&color=ffa500"></a></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white"/></a></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=Docker&logoColor=black&color=blue"/></a></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=Kubernetes&logoColor=blue&color=skyblue"/></a></a>
+<br>
+<br>
+
+---
 ## 📌 프로젝트 목표
 
 ### Docker, k8s, Jenkins를 활용하여 기존에 만들었던 "Frontend" 와 "Backend" 프로젝트에 
@@ -147,14 +158,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 
 <br>
 
-### 📌 기술 스택
 
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white&color=black"></a></a>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white&color=ffa500"></a></a>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white"/></a></a>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=Docker&logoColor=black&color=blue"/></a></a>
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=Kubernetes&logoColor=blue&color=skyblue"/></a></a>
-<br>
 
 <br>
 
@@ -174,7 +178,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 (주의) 롤링 업데이트 방식으로 무중단 배포를 할 때,
 발생할 수 있는 문제는 파드가 생성되고 컨테이너 내부의 프로그램이 로딩 되는 사이에는 서비스가 중지된다. 따라서 컨테이너 내부의 프로그램이 준비가 완료됬을 때, 파드가 삭제되도록 Health check하는 방법을 사용했다.
 
-<img src="https://github.com/beyond-sw-camp/be02-4th-developer_passion-fashion/assets/148875644/37cb8f83-0455-4884-911c-a7f23f38e9bc">
+<img src="./img/cicdArhitecture.jpg">
 
 1. develop branch에서 통합이 이루어지면 github action이 Junit를 통해 작성된 테스트 코드를 실행한다.
 2. 깃허브(원격 저장소) main branch 에 최신 버전의 프로젝트가 push된다.
@@ -189,9 +193,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
    g. 파이프라인을 진행하면서 단계마다 시작, 종료, 결과를 젠킨스 서버에서 webhook (젠킨스 webhook 플러그인) 를 통해 slack으로 전송한다.  
    h. slack를 통해 개발자들은 파이프라인 진행 현황을 확인할 수 있다.
 
-5. 블루 그린 방식을 통해 무중단 배포를 한다.
-   파이프라인의 빌드 번호에 따라 deployment blue또는deployment green이 갱신이 된다.
-6. 갱신이 종료된 디플로이먼트를 서비스에 연결 시켜준다.
+5. Rolling Update 방식을 통해 무중단 배포를 한다.
 
 ## 💻 기능 명세서 (시연 영상)
 
@@ -228,7 +230,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
          ➡ 에러 메시지가 나오는지 확인한다.
          ➡ 변경 사항이 적용되었는지 확인한다.
          </b></p><br>
-         <p><img src=""/></p>
+         <p><img src="./img/backenddeployment.gif"/></p>
          </details><br>
     </div>
 </details>
@@ -270,7 +272,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
          ➡ 변경 사항이 적용되었는지 확인한다.
          <br>
         </b></p><br>
-         <p><img src=""/></p>
+         <p><img src="./img/frontenddeployment.gif"/></p>
          </details><br>
     </div>
 </details>
