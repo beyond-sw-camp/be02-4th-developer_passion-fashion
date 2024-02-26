@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height=250&section=header&text=👕LONUA👕&desc=All%20For%20Individual%20Customized%20Fashion&descSize=20&descAlign=50&descAlignY=70&fontSize=100&animation=fadeIn&fontColor=B404AE)
+b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height=250&section=header&text=👕LONUA👕&desc=All%20For%20Individual%20Customized%20Fashion&descSize=20&descAlign=50&descAlignY=70&fontSize=100&animation=fadeIn&fontColor=B404AE)
 
 > **[플레이 데이터] 한화시스템 BEYOND SW캠프/ D.P (💥Developer Passion💥)**
 
@@ -53,16 +53,25 @@
 #### &nbsp;&nbsp;&nbsp;　수동으로 배포할 때 보다 시간을 절약 할 수 있다.
   <br>
 
+---
+
 ## 🖥️ 운영 환경 : 쿠버네티스 & 컨테이너 운영 환경 구성
 
-- 쿠버네티스를 이용한 이유
+### 🧐 쿠버네티스를 이용한 이유
 
-1.  유연성  
-    쇼핑몰의 특성상 이벤트와 할인에 따라 트래픽이 몰릴 수 있기 때문에 트래픽 상황에 따라 유연하게 대처할 수 있다는 장점이 있다.
+#### 1.  유연성  
+#### 쇼핑몰의 특성상 이벤트와 할인 행사에 따라 트래픽이 한번에 몰릴 수 있기 때문에, 트래픽 상황에 따라 유연하게 
+#### 대처할 수 있다는 장점이 있다.
 
-2.  장애 대처  
-     ReplicaSet를 통해, 장애가 생긴 파드를 자동으로 재실행 가능하다.  
-    HPA( Horizontal Pod Autoscaler)와 metrics를 활용하여, 파드의 부하 증가에 대처할 수 있다.
+<br>
+
+#### 2.  장애 대처  
+#### "ReplicaSet" 을 통해, 장애가 발생한 파드를 자동으로 재실행하는 것이 가능하다.  
+#### 또한, HPA( Horizontal Pod Autoscaler)와 metrics를 활용하여, 각각의 파드의 부하 증가에 손쉽게 대처할 수 있다.
+
+<br>
+
+---
 
 ### 📁 &nbsp;&nbsp;k8s 클러스터 구성도
 
