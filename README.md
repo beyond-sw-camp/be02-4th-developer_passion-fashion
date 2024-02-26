@@ -150,9 +150,9 @@
 
 - #### 프론트엔드, 백엔드 각각의 디플로이먼트를 통해 파드로 생성된다.
 - #### 사용자들은 LB (LoadBalancer) 타입의 Frontend-svc를 통해 웹 포트로 Nginx 서버에 접근하여 서비스를 
-#### &nbsp;&nbsp;&nbsp;　　이용한다.
+#### &nbsp;&nbsp;&nbsp;　이용한다.
 - #### 파드들 간의 통신은 ClusterIp 타입의 서비스를 통해 내부 통신으로 이루어진다. 따라서 외부에 노출 되지 
-#### &nbsp;&nbsp;&nbsp;　　않는다.
+#### &nbsp;&nbsp;&nbsp;　않는다.
 
 <br>
 
