@@ -85,14 +85,13 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 <details>
   <summary><b>노드 상세 정보(사진)</b></summary>     
   <img src="./img/nodesInfo.png"/>
-</details>
-<br>
 
 - #### CNI는 "Calico" 를 통해서 구성하였으며, 대부분의 경우에 성능적으로 뛰어나다는 점과 오픈 소스라는 점 2가지이다.
 
 - #### Calico는 LoadBalancer Type의 서비스를 제공하지 않으므로, "metallb" 를 추가로 사용하게 되었다.
 
 - #### "metrics" 는 HPA를 통한 Autoscaling 구현을 위해 사용한다.
+</details>
 <br>
 <details>
 <summary><b>Pod 상세 설명</b></summary>  
