@@ -48,11 +48,12 @@ Docker, K8S, Jenkins를 활용하여 기존에 만들었던 Frontend와 Backend�
 * 쿠버네티스를 이용한 컨테이너 운영 환경 구성 
 
 쿠버네티스를 이용한 이유  
- 1. 유연성
-쇼핑몰의 특성상 이벤트와 할인에 따라 트래픽이 몰릴 수 있기 때문에 트래픽 상황에 따라 유연하게 대처할 수 있다는 장점이 있다.
+ 1. 유연성   
+  쇼핑몰의 특성상 이벤트와 할인에 따라 트래픽이 몰릴 수 있기 때문에 트래픽 상황에 따라 유연하게 대처할 수 있다는 장점이 있다.
 
- 2. 장애 대처
- 
+ 2. 장애 대처   
+  ReplicaSet를 통해, 장애가 생긴 파드를 자동으로 재실행 가능하다.  
+ HPA( Horizontal Pod Autoscaler)와 metrics를 활용하여, 파드의 부하 증가에 대처할 수 있다.
 
 ### 💡&nbsp;&nbsp;시스템 아키텍처
 
@@ -65,6 +66,7 @@ Docker, K8S, Jenkins를 활용하여 기존에 만들었던 Frontend와 Backend�
 * 프론트엔드, 백엔드, DB 모두 각각의 디플로이먼트를 통해 파드로 생성된다.   
 * 사용자들은 LB (LoadBalancer) 타입의 Frontend-svc를 통해 웹 포트로 Nginx 서버에 접근하여 서비스를 이용한다.  
 * 파드들 간의 통신은 ClusterIp 타입의 서비스를 통해 내부 통신으로 이루어진다. 따라서 외부에 노출 되지 않는다.
+* DB는 마스터-슬래이브 안 쓰면 각 파드들의 동기화 문제를 어떻게 해결하는지 생각해봐야할 것 같은데.
 
 
 ### 📁 &nbsp;&nbsp;k8s 클러스터 구성도
@@ -76,15 +78,20 @@ Docker, K8S, Jenkins를 활용하여 기존에 만들었던 Frontend와 Backend�
 총 5대의 노드로 클러스터를 구성했다.
 
 <br>
-* CNI는 Calico를 통해서 구성하였으며, 그 이유는 아래의 사진에서 볼 수 있 듯이, 성능적으로 뛰어나다는 점과 오픈 소스여서 무료로 이용할 수 있다는 점 2가지이다.
-
+* CNI는 Calico를 통해서 구성하였으며, 그 이유는 아래의 사진에서 볼 수 있 듯이, 성능적으로 뛰어나다는 점과 오픈 소스라는 점 2가지이다.
+<br>
+<br>
+<details>
+<summary><b>사진</b></summary>
 ![image](https://github.com/thanks9807/programmers/assets/40519125/ccbbd547-1133-423f-b457-277ae83a2782)
+</details> <br>
 
+* Calico는 LoadBalance type의 서비스를 제공하지 않으므로 metailb를 추가로 사용하게 되었다.
 
-Calico는 LoadBalance type의 서비스를 제공하지 않으므로 metalib를 추가로 사용하게 되었다.
-
-자세한 설명은 클릭해야 볼 수 있게 만들자
-
+* metrics는 Hpa를 통한 Autoscaling 구현을 위해 사용한다.
+<br>
+<details>
+<summary><b>Pod 상세 설명</b></summary>
 각 Worker 노드에는 다음과 같은 파드가 공통적으로 생성된다.
 * calico-node :  네트워크 정책을 관리하고 구성하는 역할
 * metalib-system : 클러스터 내에서 로드 밸런싱 및 외부 서비스 노출을 담당하는 역할
@@ -98,9 +105,7 @@ Master Node에는 다음과 같은 파드들이 추가된다.
 > metailb-system Namespace
 > * speaker :  외부 라우팅 장치와 통신하여 로드 밸런서에 할당된 IP 주소를 라우팅하는 역할
 > * controller : 클러스터 내에서 IP 주소 범위를 관리하고, 외부 서비스에 IP 주소를 동적으로 할당하고 회수하는 역할
-
-
-### 운영 시나리오
+ </details><br>
 
 <br>
 
