@@ -34,7 +34,7 @@
 <br>
 
 ---
-## 📌 프로젝트 목표
+## 🤳 프로젝트 목표
 
 ### Docker, k8s, Jenkins를 활용하여 기존에 만들었던 "Frontend" 와 "Backend" 프로젝트에 
 ### CI/CD를 적용한다.
