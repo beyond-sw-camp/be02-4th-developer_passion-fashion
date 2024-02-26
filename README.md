@@ -207,7 +207,7 @@
 <br>
 
 ## 💻 CI/CD 시연 영상
-
+<br>
 <details>
 <summary><b>🤵🏻‍♂️ Backend CI/CD </b></summary><br>
     <div>
