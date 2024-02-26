@@ -158,44 +158,48 @@
 
 ## 💽&nbsp;&nbsp;CI/CD 시스템 아키텍처
 
+
+###  🧐 배포 시 고려사항
+
+### < 무중단 배포를 해야하는 이유 >
+
+#### 소비자들이 소비 욕구를 느꼈을 때, 그 상품을 바로 구매하지 못하면 구매율이 떨어질 수 밖에 없다.
+#### 따라서 쇼핑몰은 사용자들이 원하는 시기에 항상 상품을 구매할 수 있도록 해야한다.
+---
+### < Rolling Update 방식을 사용한 이유 >
+#### Rolling Update 방식은 구현 방식이 간단하고, 팀원 중에 쿠버네티스를 다뤄본 사람이 없다는 현재 상황에서, 
+#### 복잡한 방법보다는 가장 간단한 구현 방식을 선택하게 되었다.
+
 <br>
 
-
+#### ( 주의 ❗) 
+#### Rolling Update 방식으로 무중단 배포를 할 때, 발생할 수 있는 문제는 파드가 생성되고 컨테이너 내부의 
+#### 프로그램이 로딩 되는 사이에는 서비스가 중단되는 상황이 발생한다. 
+#### 따라서, 컨테이너 내부의 프로그램이 준비가 완료됬을 때, 파드가 삭제되도록 "Health check " 하는 방법으로 
+#### readiness 및 liveness probe 를 사용했다.
 
 <br>
-
-### 배포 시나리오
-
-#### Rolling Update 방식을 이용한 무중단 배포
-
-#### 이유
-
-소비자들이 소비 욕구를 느꼈을 때, 그 상품을 바로 구매하지 못하면 구매율이 떨어질 수 밖에 없다.
-따라서 쇼핑몰은 사용자들이 원하는 시기에 항상 상품을 구매할 수 있도록 해야한다.
-
-방식은 롤링 업데이트 방식을 선택했다.
-그 이유는 구현 방식이 간단하기 때문이다.
-팀원 중에 쿠버네티스를 다뤄본 사람이 없다는 현재 상황에서, 복잡한 방법보다는 가장 간단한 구현 방식을 선택하였다.
-
-(주의) 롤링 업데이트 방식으로 무중단 배포를 할 때,
-발생할 수 있는 문제는 파드가 생성되고 컨테이너 내부의 프로그램이 로딩 되는 사이에는 서비스가 중지된다. 따라서 컨테이너 내부의 프로그램이 준비가 완료됬을 때, 파드가 삭제되도록 Health check하는 방법을 사용했다.
-
 <img src="./img/cicdArhitecture.jpg">
 
-1. develop branch에서 통합이 이루어지면 github action이 Junit를 통해 작성된 테스트 코드를 실행한다.
-2. 깃허브(원격 저장소) main branch 에 최신 버전의 프로젝트가 push된다.
-3. 깃허브는 젠킨스에게 Webhook를 보낸다.
-4. 젠킨스는 파이프라인에 저장된 절차를 실행한다.  
-   a. 젠킨스 서버에 깃허브의 있는 프로젝트를 가져온다. (git clone)  
-   b. 프로젝트가 벡엔드라면 mvn package, 프로젝트가 프론트엔드라면 npm run build를 통해 build한다.  
-   c. 빌드를 통해 생긴 jar 또는 dist directory를 이용해 dockerfile로 docker image를 만든다.  
-   d. docker image를 docker hub에 올린다.  
-   e. 젠킨스 서버에서 k8s master에 deployment와 service를 만드는 yml file을 전송한다.  
-   f. k8s master에서 yml file들을 적용시킨다. (kubectl apply)  
-   g. 파이프라인을 진행하면서 단계마다 시작, 종료, 결과를 젠킨스 서버에서 webhook (젠킨스 webhook 플러그인) 를 통해 slack으로 전송한다.  
-   h. slack를 통해 개발자들은 파이프라인 진행 현황을 확인할 수 있다.
+<br>
 
-5. Rolling Update 방식을 통해 무중단 배포를 한다.
+### 🚀 배포 시나리오 : Rolling Update 방식을 이용한 무중단 배포
+
+#### 1. develop branch에서 통합이 이루어지면, github action이 Junit을 통해 작성된 테스트 코드를 실행한다.
+#### 2. 깃허브(원격 저장소) main branch 에 최신 버전의 프로젝트가 "push" 된다.
+#### 3. 깃허브는 젠킨스에게 Webhook을 보낸다.
+#### 4. 젠킨스는 파이프라인에 저장된 절차를 실행한다.  
+#### &nbsp;　a. 젠킨스 서버에 깃허브의 있는 프로젝트를 가져온다. (git clone)  
+#### &nbsp;　b. 프로젝트가 벡엔드라면 "mvn package", 프로젝트가 프론트엔드라면 "npm run build" 를 통해 빌드 한다.  
+#### &nbsp;　c. 빌드를 통해 생긴 "jar" 또는 "dist 폴더" 를 이용해 Dockerfile로 Docker image 를 만든다.  
+#### &nbsp;　d. Docker image를 Docker hub에 "push" 한다.  
+#### &nbsp;　e. 젠킨스 서버에서 k8s master에 "deployment" yaml file을 전송한다.  
+#### &nbsp;　f. k8s master에서 yaml file들을 적용시킨다. ( kubectl apply )  
+#### &nbsp;　g. 파이프라인을 진행하면서 단계마다 시작, 종료, 결과를 젠킨스 서버에서 Jenkins CI 를 통해 
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　Slack으로 전송한다.  
+#### &nbsp;　h. Slack을 통해 개발자들은 파이프라인 진행 현황을 확인할 수 있다.
+
+#### 5. 최종적으로 Rolling Update 방식을 통해 무중단 배포가 이루어 진다.
 
 <br>
 
