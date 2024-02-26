@@ -1,4 +1,4 @@
-b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height=250&section=header&text=👕LONUA👕&desc=All%20For%20Individual%20Customized%20Fashion&descSize=20&descAlign=50&descAlignY=70&fontSize=100&animation=fadeIn&fontColor=B404AE)
+![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height=250&section=header&text=👕LONUA👕&desc=All%20For%20Individual%20Customized%20Fashion&descSize=20&descAlign=50&descAlignY=70&fontSize=100&animation=fadeIn&fontColor=B404AE)
 
 > **[플레이 데이터] 한화시스템 BEYOND SW캠프/ D.P (💥Developer Passion💥)**
 
@@ -69,15 +69,15 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 ## 🖥️ 운영 환경 : 쿠버네티스 & 컨테이너 운영 환경 구성
 
 ### 🧐 쿠버네티스를 이용한 이유
-<br>
 
-#### 1.  유연성  
+
+### ✅ 유연성  
 #### 쇼핑몰의 특성상 이벤트와 할인 행사에 따라 트래픽이 한번에 몰릴 수 있기 때문에, 트래픽 상황에 따라 유연하게 
 #### 대처할 수 있다는 장점이 있다.
 
 <br>
 
-#### 2.  장애 대처  
+### ✅ 장애 대처  
 #### "ReplicaSet" 을 통해, 장애가 발생한 파드를 자동으로 재실행하는 것이 가능하다.  
 #### 또한, HPA( Horizontal Pod Autoscaler)와 metrics를 활용하여, 각각의 파드의 부하 증가에 손쉽게 대처할 수 있다.
 
@@ -148,9 +148,11 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 
 <br>
 
-- 프론트엔드, 백엔드 각각의 디플로이먼트를 통해 파드로 생성된다.
-- 사용자들은 LB (LoadBalancer) 타입의 Frontend-svc를 통해 웹 포트로 Nginx 서버에 접근하여 서비스를 이용한다.
-- 파드들 간의 통신은 ClusterIp 타입의 서비스를 통해 내부 통신으로 이루어진다. 따라서 외부에 노출 되지 않는다.
+- #### 프론트엔드, 백엔드 각각의 디플로이먼트를 통해 파드로 생성된다.
+- #### 사용자들은 LB (LoadBalancer) 타입의 Frontend-svc를 통해 웹 포트로 Nginx 서버에 접근하여 서비스를 
+#### &nbsp;&nbsp;&nbsp;　　이용한다.
+- #### 파드들 간의 통신은 ClusterIp 타입의 서비스를 통해 내부 통신으로 이루어진다. 따라서 외부에 노출 되지 
+#### &nbsp;&nbsp;&nbsp;　　않는다.
 
 <br>
 
