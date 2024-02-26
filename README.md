@@ -80,16 +80,15 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 
 ![클러스터 구성도](./img/clusterArchitecture.jpg)
 
-#### k8s 클러스터는 총 5대의 노드로 클러스터를 구성했다.
+#### ✅ k8s 클러스터는 총 5대의 노드로 클러스터를 구성했다.
 
 <details>
   <summary><b>노드 상세 정보(사진)</b></summary> 
   <br>    
   <img src="./img/nodesInfo.png"/>
 
-- #### CNI는 "Calico" 를 통해서 구성하였으며, 대부분의 경우에 성능적으로 뛰어나다는 점과 오픈 소스라는 점
-
-  #### 2가지이다.
+- #### CNI는 "Calico" 를 통해서 구성하였으며, Calico를 선택한 이유는 대부분의 경우에 성능적으로 뛰어나다는 점
+  ####  과 오픈 소스라는 점 2가지이다.
 
 - #### Calico는 LoadBalancer Type의 서비스를 제공하지 않으므로, "metallb" 를 추가로 사용하게 되었다.
 
