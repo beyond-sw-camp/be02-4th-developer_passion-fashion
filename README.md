@@ -58,6 +58,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 ## 🖥️ 운영 환경 : 쿠버네티스 & 컨테이너 운영 환경 구성
 
 ### 🧐 쿠버네티스를 이용한 이유
+<br>
 
 #### 1.  유연성  
 #### 쇼핑몰의 특성상 이벤트와 할인 행사에 따라 트래픽이 한번에 몰릴 수 있기 때문에, 트래픽 상황에 따라 유연하게 
@@ -79,7 +80,7 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 
 ![클러스터 구성도](./img/clusterArchitecture.jpg)
 
-총 5대의 노드로 클러스터를 구성했다.
+#### k8s 클러스터는 총 5대의 노드로 클러스터를 구성했다.
 
 <details>
   <summary><b>노드 상세 정보(사진)</b></summary>     
@@ -87,16 +88,18 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 </details>
 <br>
 
-- CNI는 Calico를 통해서 구성하였으며, 대부분의 경우에 성능적으로 뛰어나다는 점과 오픈 소스라는 점 2가지이다.
+- #### CNI는 "Calico" 를 통해서 구성하였으며, 대부분의 경우에 성능적으로 뛰어나다는 점과 오픈 소스라는 점 2가지이다.
 
-- Calico는 LoadBalance type의 서비스를 제공하지 않으므로 metailb를 추가로 사용하게 되었다.
+- #### Calico는 LoadBalancer Type의 서비스를 제공하지 않으므로, "metallb" 를 추가로 사용하게 되었다.
 
-- metrics는 Hpa를 통한 Autoscaling 구현을 위해 사용한다.
+- #### "metrics" 는 HPA를 통한 Autoscaling 구현을 위해 사용한다.
 <br>
 <details>
 <summary><b>Pod 상세 설명</b></summary>  
 <br>  
-각 Worker 노드에는 다음과 같은 파드가 공통적으로 생성된다.
+
+#### 각 Worker 노드에는 다음과 같은 파드가 공통적으로 생성된다.
+
 <br>
 
 * calico-node : 네트워크 정책을 관리하고 구성하는 역할
