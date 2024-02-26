@@ -212,7 +212,7 @@
 <summary><b>🤵🏻‍♂️ Backend CI/CD </b></summary><br>
     <div>
     <details>
-         <summary><b>파이프 라인</b></summary>
+         <summary><b>Jenkins Pipeline</b></summary>
                   <br>
          <p><b>
           ➡ 백엔드 응답 메시지를 바꾸고 깃에 푸시
@@ -250,13 +250,13 @@
 <summary><b>🧑‍🎄 Frontend CI/CD</b></summary><br>
     <div>
     	 <details>
-         <summary><b>테스트</b></summary>
+         <summary><b>테스트 ( GitHub Action )</b></summary>
                   <br>
          <p><b>➡ github action를 이용한 test code 실행 <br><br>
          <p><img src="./img/frontendtestCI.gif"/></p>
          </details><br>
     	 <details>
-         <summary><b>파이프 라인</b></summary>
+         <summary><b>Jenkins Pipeline</b></summary>
                   <br>
          <p><b>
           ➡ Join 글자 변경 후 푸시
