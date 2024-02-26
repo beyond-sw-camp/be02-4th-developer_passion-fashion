@@ -195,11 +195,17 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
 
 5. Rolling Update 방식을 통해 무중단 배포를 한다.
 
-## 💻 기능 명세서 (시연 영상)
+<br>
+
+---
+<br>
+
+## 💻 CI/CD 시연 영상
 
 <details>
 <summary><b>🤵🏻‍♂️ Backend CI/CD </b></summary><br>
     <div>
+    <details>
          <summary><b>파이프 라인</b></summary>
                   <br>
          <p><b>
@@ -217,10 +223,9 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
          <p>
          <b>➡ 각 단계마다 slack 알람이 온다. </b>
          <br>
-         <p><img src="./img/backendSlack.gif.gif"/></p>
+         <p><img src="./img/backendSlack.gif"/></p>
          </details>
          <br>
-    	 <details>
 	    <details>
          <summary><b>무중단 배포</b></summary>
          <br>
@@ -234,9 +239,9 @@ b![header](https://capsule-render.vercel.app/api?type=Waving&color=F7BE81&height
          </details><br>
     </div>
 </details>
-
+<br>
 <details>
-<summary><b>🤵🏻‍♂️ Frontend CI/CD</b></summary><br>
+<summary><b>🧑‍🎄 Frontend CI/CD</b></summary><br>
     <div>
     	 <details>
          <summary><b>테스트</b></summary>
